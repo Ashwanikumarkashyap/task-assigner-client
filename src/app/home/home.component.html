@@ -1,0 +1,43 @@
+<div *ngIf="username && userRequest">
+    <mat-tab-group class="center-allign" dynamicHeight>
+    
+            <mat-tab label="All TODOS">
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="Yet to complete">
+                        <app-todos [username] = "username" [todos] = "todosUnfinished" [todoRequest] = "todoRequest" *ngIf="username"></app-todos>
+                    </mat-tab>
+                    <mat-tab label="Completed">
+                        <app-todos [username] = "username" [todos] = "todosFinished" [todoRequest] = "todoRequest" *ngIf="username"></app-todos>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-tab>
+        
+            <mat-tab label="ASSIGNED TO ME">
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="Yet to Complete">
+                            <app-todos [todos]="todosToUserUnfinished" [username] = "username" [todoRequest] = "todoRequest" *ngIf="username"></app-todos>
+                    </mat-tab>
+                    <mat-tab label="Completed">
+                            <app-todos [todos]="todosToUserFinished" [username] = "username" [todoRequest] = "todoRequest" *ngIf="username"></app-todos>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-tab>
+        
+            <mat-tab label="ASSIGNED BY ME">
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="Yet to Complete">
+                        <app-todos [todos]="todosByUserUnfinished" [username] = "username" [todoRequest] = "todoRequest" *ngIf="username"></app-todos>
+                    </mat-tab>
+                    <mat-tab label="Completed">
+                        <app-todos [todos] = "todosByUserFinished" [username] = "username" [todoRequest] = "todoRequest" *ngIf="username"></app-todos>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-tab>
+        
+        </mat-tab-group>
+
+        <a class = "addButton" *ngIf="username" mat-button mat-fab (click)="openTodoCreateForm()"><span class="fa fa-plus fa-lg"></span> </a>
+                
+</div>
+    
+<app-login *ngIf="!username && userRequest" ></app-login>

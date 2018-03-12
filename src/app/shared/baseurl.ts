@@ -1,0 +1,1 @@
+export const baseURL = '<server request URL>';

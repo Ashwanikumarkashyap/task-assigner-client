@@ -1,0 +1,90 @@
+<mat-progress-bar *ngIf="loginRequest" mode="indeterminate"></mat-progress-bar>
+<mat-accordion>
+  <mat-expansion-panel [expanded]= "true">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        LOGIN
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form class="loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+      <p>
+        <mat-form-field dividerColor="{{(loginFormErrors.username) ? 'warn' : 'primary'}}">
+          <input matInput placeholder="Username" type="text" formControlName="username" required>
+          <mat-hint>
+            <span [hidden]="!(loginFormErrors.username)">
+              {{loginFormErrors.username}}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field dividerColor="{{(loginFormErrors.password) ? 'warn' : 'primary'}}">
+          <input matInput placeholder="Password" type="password" formControlName="password" required>
+          <mat-hint>
+            <span [hidden]="!(loginFormErrors.password)">
+              {{loginFormErrors.password}}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="loginForm.invalid">Login</button>
+    </form>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        REGISTER
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form class="registerForm" novalidate [formGroup]="registerForm" (ngSubmit)="register()">
+      <p>
+        <mat-form-field dividerColor="{{(registerFormErrors.username) ? 'warn' : 'primary'}}">
+          <input matInput placeholder="Username" type="text" formControlName="username" required>
+          <mat-hint>
+            <span [hidden]="!(registerFormErrors.username)">
+              {{registerFormErrors.username}}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field dividerColor="{{(registerFormErrors.password) ? 'warn' : 'primary'}}">
+          <input matInput placeholder="Password" type="password" formControlName="password" required>
+          <mat-hint>
+            <span [hidden]="!(registerFormErrors.password)">
+              {{registerFormErrors.password}}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+
+        <mat-form-field dividerColor="{{(registerFormErrors.confirmPassword) ? 'warn' : 'primary'}}">
+          <input matInput placeholder="Confirm Password" type="password" formControlName="confirmPassword" required>
+          <mat-hint>
+            <span [hidden]="!(registerFormErrors.confirmPassword)">
+              {{registerFormErrors.confirmPassword}}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field dividerColor="{{(registerFormErrors.secret) ? 'warn' : 'primary'}}">
+          <input matInput placeholder="Gharka Secret" type="password" formControlName="secret" required>
+          <mat-hint>
+            <span [hidden]="!(registerFormErrors.secret)">
+              {{registerFormErrors.secret}}
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="registerForm.invalid">Register</button>
+      </form>
+
+  </mat-expansion-panel>
+</mat-accordion>

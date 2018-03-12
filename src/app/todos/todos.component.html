@@ -1,0 +1,29 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <span *ngIf="todoRequest"> <mat-progress-bar style="margin-bottom: 0px;" mode="query"></mat-progress-bar></span>
+  <mat-list class="make-scrollable">
+    <mat-list-item *ngFor="let todo of todos" (click)="openTodoDetail(todo)">
+      <h3 style="font-size: 1.2em; font-weight: 550; margin-bottom: 0.4em;" class="titleTile" mat-line> {{todo.title}} </h3>
+      <span style="margin-bottom: 0.1em;" mat-line> {{todo.description}}</span>
+      <p mat-line>
+        <span> -- {{todo.author}},
+          <span *ngIf="todo.updatedAt!=todo.createdAt" class="fa fa-edit fa-lg" style="font-size: 0.9em;" > {{todo.updatedAt | date }}</span>
+          <span *ngIf="todo.updatedAt==todo.createdAt" class="fa fa-calendar fa-lg" style="font-size: 0.9em;" > {{todo.createdAt | date }}</span>
+        </span>
+      </p>
+      <div *ngIf="todo.finishedBy==''  && (todo.author==username || !(todo.assignTo) || (todo.assignTo!=null && todo.assignTo.indexOf(username)!=-1) )" class="finish">
+          <span (click)="finishTodo(todo); $event.stopPropagation();" class="fa fa-check-circle fa-lg"></span>
+        </div>
+        <div *ngIf="todo.finishedBy!='' && (todo.author==username || !(todo.assignTo) || (todo.assignTo!=null && todo.assignTo.indexOf(username)!=-1) )" class="unfinish">
+        <span (click)="unfinishTodo(todo); $event.stopPropagation();" class="fa fa-history fa-lg"></span>
+      </div>
+    </mat-list-item>
+  </mat-list>
+  
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
+
+</div>

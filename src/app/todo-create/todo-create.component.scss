@@ -1,0 +1,24 @@
+.full-width {
+    width: 95%
+}
+
+.description {
+    width: 70%;
+    margin-right: 6%;
+    margin-top: 0.5em;
+}
+
+.dialog-content {
+    text-align: center;
+}
+
+.slider-placeholder {
+    color: #757575;
+    position: absolute;
+}
+
+::ng-deep .mat-dialog-container {
+    max-width: none;
+    margin: 0 5%;
+    width: 90%;
+}

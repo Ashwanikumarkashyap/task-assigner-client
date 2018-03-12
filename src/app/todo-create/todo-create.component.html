@@ -1,0 +1,43 @@
+
+<mat-progress-bar *ngIf="todoCreateRequest" mode="indeterminate"></mat-progress-bar>
+
+<mat-toolbar mat-dialog-title color="primary">
+  Add a To-do
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<form novalidate [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="dialog-content" >
+    
+      <mat-form-field class="full-width" dividerColor="{{(formErrors.title) ? 'warn' : 'primary'}}">
+        <input matInput placeholder="Title" type="text" formControlName="title" required>
+        <mat-hint>
+          <span [hidden]="!(formErrors.title)">
+            {{formErrors.title}}
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="description">
+        <textarea matInput formControlName="description" placeholder="Description" rows=4></textarea>
+      </mat-form-field>
+      
+      <span class="slider-placeholder">Priority</span>
+      <mat-slider thumbLabel vertical formControlName="priority" min="1" max="5" step="1" tickInterval="1" name="priority" tickInterval="1">  
+      </mat-slider>
+
+      <mat-form-field>
+        <mat-select placeholder="Assign todo" formControlName="assignTo" multiple>
+          <mat-option *ngFor="let user of users" [value]="user.username">
+            {{ user.username }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="todoForm.invalid">submit</button>
+  </mat-dialog-actions>
+</form>

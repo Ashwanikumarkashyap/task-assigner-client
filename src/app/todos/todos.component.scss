@@ -1,0 +1,35 @@
+mat-list.make-scrollable {
+    height: 71vh; //Or any other height you wish
+    overflow-y: scroll;
+}
+
+mat-list.make-scrollable :hover {
+    background-color: #e9e9f4;
+    cursor: pointer;
+}
+
+.finish {
+    margin-right: 1em;
+    font-size: 1.5em;
+    color: #25a593;
+    cursor: pointer;
+}
+
+.unfinish {
+    margin-right: 1em;
+    font-size: 1.5em;
+    color: #25a593;
+    cursor: pointer;
+}
+
+.finish :hover {
+    color: #21914e;
+}
+
+.unfinish :hover {
+    color: #3274b6;
+}
+
+::ng-deep .mat-line {
+    font-size: 2em;
+}

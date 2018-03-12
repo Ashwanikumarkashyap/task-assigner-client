@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <div class="notification" *ngIf="username">
+    <div>
+      <span class="fa fa-user fa-lg assigned-notification-icon"></span>
+      <span *ngIf="notificationCount!=undefined && notificationCount.assignedTodosCount!=0" (click)="resetAssignedCount()" class="assigned-notification-count">+{{notificationCount.assignedTodosCount}}</span>
+    </div>
+    <div class="total-notification">
+      <span class="fa fa-users fa-lg total-notification-icon"></span>
+      <span *ngIf="notificationCount!=undefined && notificationCount.totalTodosCount!=0" (click)="resetTotalCount()" class="total-notification-count">+{{notificationCount.totalTodosCount}}</span>
+    </div>  
+  </div>
+    <span class="username" *ngIf="username && response">{{username | uppercase}} </span>
+  <span class="flex-spacer"></span>
+  <span class="welcomeTitle" *ngIf="!username && response"> GH <span class="fa fa-home fa-lg" ></span> RWALE WELCOMES YOU</span>
+  <a class="signout" *ngIf="username"(click)="logOut()"><span class=" signout fa fa-power-off fa-lg"></span></a>
+
+</mat-toolbar>

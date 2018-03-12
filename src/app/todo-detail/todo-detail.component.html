@@ -1,0 +1,62 @@
+<mat-progress-bar *ngIf="todoEditRequest" mode="indeterminate"></mat-progress-bar>
+
+<mat-toolbar mat-dialog-title color="primary">
+
+  <div class="edit">
+    <span class="edit-text" *ngIf="disabled && selectedTodo.finishedBy=='' && selectedTodo.author==username "  (click)="edit(); $event.stopPropagation();">Edit</span>
+  </div>
+  <span *ngIf="disabled && (username==selectedTodo.author) && selectedTodo.finishedBy=='' " class="divider">|</span>
+  <span *ngIf= "username!=selectedTodo.author" >Details</span>
+
+  <div *ngIf="username==selectedTodo.author" class="delete">
+    <span class="delete-icon fa fa-trash fa-lg" (click)="deleteTodo(selectedTodo); $event.stopPropagation();"></span>
+  </div>
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+
+</mat-toolbar>
+
+<form novalidate [formGroup]="editTodoForm" (ngSubmit)="editTodo()">
+  <mat-dialog-content class="dialog-content" >
+      <mat-form-field class="full-width" dividerColor="{{(formErrors.title) ? 'warn' : 'primary'}}">
+        <input  matInput placeholder="Title" type="text" formControlName="title" required>
+        <mat-hint>
+          <span [hidden]="!(formErrors.title)">
+            {{formErrors.title}}
+          </span>
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="description">
+        <textarea matInput formControlName="description" placeholder="Description" rows=4></textarea>
+      </mat-form-field>
+
+      <span class="slider-placeholder">Priority</span>
+      <mat-slider thumbLabel vertical formControlName="priority" min="1" max="5" step="1" tickInterval="1" name="priority" tickInterval="1">
+        </mat-slider>
+
+      <mat-form-field *ngIf="!disabled">
+        <mat-select placeholder="Assign todo" formControlName="assignTo" multiple>
+          <mat-option *ngFor="let user of users" [value]="user.username">
+            {{ user.username }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="disabled" class="full-width">
+        <textarea matInput [value] ="assignToString" [disabled]="true" placeholder="Assigned To" rows=3></textarea>
+      </mat-form-field>
+
+      <span>
+        <span *ngIf="selectedTodo.updatedAt!=selectedTodo.createdAt && disabled" class="fa fa-edit fa-lg" style="font-size: 0.9em;" > {{selectedTodo.updatedAt | date }}</span>
+        <span *ngIf="disabled" class="fa fa-calendar fa-lg" style="font-size: 0.9em;" > {{selectedTodo.createdAt | date }}</span>
+      </span>
+
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions *ngIf="!disabled">
+    <span class="flex-spacer"></span>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="editTodoForm.invalid">submit</button>
+  </mat-dialog-actions>
+</form>

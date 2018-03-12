@@ -1,0 +1,18 @@
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+.footer{
+    background-color: #593a90;
+    width: 100%;
+    bottom: 0px;
+    position: fixed;
+    z-index: 1;
+    color: white;
+}

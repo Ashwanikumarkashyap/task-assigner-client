@@ -1,0 +1,66 @@
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+.welcomeTitle {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notification {
+    display: flex;
+}
+
+.assigned-notification-count {
+    border: 1px solid;
+    border-radius: 12px;
+    padding: 0.15em 0.2em 0.15em 0.15em;
+    background: #0b73f2;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-left: 0.1em;
+}
+
+.total-notification {
+    margin-left: 1em;
+}
+
+.total-notification-count {
+    border: 1px solid;
+    border-radius: 12px;
+    padding: 0.15em 0.2em 0.15em 0.15em;
+    background: #0b73f2;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-left: 0.1em;
+}
+
+.signout {
+    cursor: pointer;
+}
+
+.signout :hover{
+    color: #919edb;
+}
+
+.username {
+    position: absolute;
+    right: 2.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 6.2em;
+    text-align: right;
+}
+
+
+
+
+

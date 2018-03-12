@@ -1,0 +1,11 @@
+.addButton {
+    position: fixed;
+    bottom: 1.2em;
+    right: calc(50% - 28px);
+    z-index: 10;
+    background-color: #ffd740;
+}
+
+::ng-deep .mat-tab-labels{
+    justify-content: center; /* align items in Main Axis */
+}

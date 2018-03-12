@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  
+  <title>GharwaleClient</title>
+  <base href="/">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- PWA -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="theme-color" content="#673ab7">
+
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <app-root></app-root>
+
+  <!-- PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('SW registered');
+      })
+      .catch((err) => {
+        console.log('SW error', err);
+      });
+    }
+  </script>
+  <noscript> <h3>JS support is required to run the application, your browser does'nt support JS. </h3></noscript>
+</body>
+</html>
