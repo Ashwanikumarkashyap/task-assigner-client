@@ -10,6 +10,11 @@
         <span> -- {{todo.author}},
           <span *ngIf="todo.updatedAt!=todo.createdAt" class="fa fa-edit fa-lg" style="font-size: 0.9em;" > {{todo.updatedAt | date }}</span>
           <span *ngIf="todo.updatedAt==todo.createdAt" class="fa fa-calendar fa-lg" style="font-size: 0.9em;" > {{todo.createdAt | date }}</span>
+          <span *ngIf="todo.assignTo !=null && todo.assignTo.length!=0" class="fa fa-users fa-lg" style="font-size: 0.9em;" > +{{todo.assignTo.length }}</span>
+        </span>
+      </p>
+      <p mat-line  *ngIf="todo.finishedBy!='' ">
+        -- {{todo.finishedBy}} <span style="font-size: 1em; color: #5ab95a" class="fa fa-check fa-lg">
         </span>
       </p>
       <div *ngIf="todo.finishedBy==''  && (todo.author==username || !(todo.assignTo) || (todo.assignTo!=null && todo.assignTo.indexOf(username)!=-1) )" class="finish">
