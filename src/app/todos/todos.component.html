@@ -8,8 +8,8 @@
       <span style="margin-bottom: 0.1em;" mat-line> {{todo.description}}</span>
       <p mat-line>
         <span> -- {{todo.author}},
-          <span *ngIf="todo.updatedAt!=todo.createdAt" class="fa fa-edit fa-lg" style="font-size: 0.9em;" > {{todo.updatedAt | date : "d, MMMM"}}</span>
-          <span *ngIf="todo.updatedAt==todo.createdAt" class="fa fa-calendar fa-lg" style="font-size: 0.9em;" > {{todo.createdAt | date : "d, MMMM"}}</span>
+          <span *ngIf="todo.updatedAt!=todo.createdAt" class="fa fa-edit fa-lg" style="font-size: 0.9em;" > {{todo.updatedAt | date : "d MMMM"}}</span>
+          <span *ngIf="todo.updatedAt==todo.createdAt" class="fa fa-calendar fa-lg" style="font-size: 0.9em;" > {{todo.createdAt | date : "d MMMM"}}</span>
           <span *ngIf="todo.assignTo !=null && todo.assignTo.length!=0" class="fa fa-users fa-lg" style="font-size: 0.9em;" > +{{todo.assignTo.length }}</span>
         </span>
       </p>
