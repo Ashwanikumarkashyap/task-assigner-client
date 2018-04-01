@@ -19,7 +19,7 @@ A simple task assigner for the members of the family, "Because every household h
         * Unfinished
 * Assigned task includes:
     * Required
-        * Title (unique)
+        * Title
     * Optional
         * Description (default: blank)
         * Priority (default: 3)
