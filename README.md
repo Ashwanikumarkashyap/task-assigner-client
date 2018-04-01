@@ -37,8 +37,9 @@ A simple task assigner for the members of the family, "Because every household h
 * run command `npm install` from the terminal in the root directory of the project (make sure node is already installed on the machine).
 * Run `ng serve --open`.
 
-## Framework and plugins
-* Angular -v 5.2.0, AngularCli -v 1.6.5, flex-layout -v 2.0.0-beta.12, Angular Material Design -v 2.0.0-beta.12
+## Framework, plugins and techniques used
+* express -v 4.15.5, mongoose -v 4.13.9, bluebird -v 3.5.1, morgan -v 1.9.0
+* The client/server end uses JSON web token (SHA256 ecryption) based authentication scheme, sent via authentication header as bearer token.
 
 ## PWA plugin
 
